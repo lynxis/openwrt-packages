@@ -148,7 +148,7 @@ define Build/InstallDev
 		$(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*.pc \
 		$(1)/usr/lib/pkgconfig
 	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/lib/*.so* \
+		$(PKG_INSTALL_DIR)/usr/lib/*.{la,so}* \
 		$(1)/usr/lib/
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/pulseaudio/* \
