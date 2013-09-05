@@ -21,6 +21,7 @@ PKG_LICENE_FILES:=DISCLAIMER
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 
 define Package/libwrap
   SECTION:=libs
@@ -31,11 +32,15 @@ endef
 
 TARGET_CFLAGS += $(FPIC)
 
+ifeq ($(CONFIG_BUILD_NLS),y)
+TARGET_LDFLAGS += "-lnls"
+endif
+
 define Build/Compile	
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		$(TARGET_CONFIGURE_OPTS) \
 		OPT_CFLAGS="$(TARGET_CFLAGS)" \
-		LIBS=-lnsl \
+		LIBS="$(TARGET_LDFLAGS)" \
 		NETGROUP= \
 		VSYSLOG= \
 		BUGS= \
