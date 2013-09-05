@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libshout
 PKG_VERSION:=2.2.2
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://downloads.us.xiph.org/releases/libshout/
@@ -38,14 +38,13 @@ define Package/libshout/description
 	details.
 endef
 
-define Build/Configure
-	$(call Build/Configure/Default, \
-		VORBIS_CFLAGS="-I$(STAGING_DIR)/usr/include/tremor/" \
-		VORBIS_LIBS="$(TARGET_LDFLAGS) -lvorbis -lvorbisidec" \
-		--enable-shared \
-		--enable-static \
-	)
-endef
+CONFIGURE_VARS += \
+	VORBIS_CFLAGS="-I$(STAGING_DIR)/usr/include/tremor/" \
+	VORBIS_LIBS="$(TARGET_LDFLAGS) -lvorbis -lvorbisidec"
+
+CONFIGURE_ARGS += \
+	--enable-shared \
+	--enable-static
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/shout
