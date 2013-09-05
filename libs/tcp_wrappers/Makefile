@@ -35,7 +35,6 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		$(TARGET_CONFIGURE_OPTS) \
 		OPT_CFLAGS="$(TARGET_CFLAGS)" \
-		LIBS=-lnsl \
 		NETGROUP= \
 		VSYSLOG= \
 		BUGS= \
