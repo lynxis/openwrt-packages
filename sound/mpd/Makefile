@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mpd
-PKG_VERSION:=0.16.5
-PKG_RELEASE:=2
+PKG_VERSION:=0.17.5
+PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=@SF/musicpd
-PKG_MD5SUM:=f7564cff12035f6a1112cce770655df7
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=http://www.musicpd.org/download/mpd/0.17/
+PKG_MD5SUM:=b68be330deeb23989c08a9fefd9fcdeb
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=1
@@ -112,6 +112,7 @@ CONFIGURE_ARGS += \
 	--disable-mvp \
 	--disable-openal \
 	--disable-pulse \
+	--disable-soup \
 	--disable-sidplay \
 	--disable-solaris-output \
 	--disable-sqlite \
